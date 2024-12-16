@@ -1,34 +1,35 @@
 # Mi Lista PRO
 
-![Mi Lista PRO](https://via.placeholder.com/1200x400.png?text=Mi+Lista+PRO) <!-- Puedes reemplazar esta URL con una imagen real de tu proyecto -->
+![Mi Lista PRO Banner](https://via.placeholder.com/1200x400.png?text=Mi+Lista+PRO) 
 
-## Descripción
+---
 
-**Mi Lista PRO** es una aplicación simple pero poderosa para gestionar tareas personales. Permite a los usuarios agregar, eliminar y organizar sus tareas de manera intuitiva, asegurando que siempre tengan el control sobre sus pendientes. Esta aplicación está diseñada con un enfoque minimalista, ofreciendo una experiencia limpia y fácil de usar.
+**Mi Lista PRO** es una aplicación simple pero poderosa para gestionar tus tareas diarias. Te permite agregar, eliminar y organizar tus tareas de forma intuitiva y atractiva, manteniéndote siempre en control de tus pendientes.
 
-### Características:
-- Agregar tareas fácilmente.
-- Eliminar tareas de manera rápida.
-- Diseño simple y atractivo.
-- Compatible con dispositivos móviles y de escritorio.
+## 🚀 Características
 
-## Tecnologías Utilizadas
+- **Fácil gestión de tareas**: Agrega y elimina tareas rápidamente.
+- **Interfaz limpia y moderna**: Diseño intuitivo y atractivo.
+- **Responsiva**: Optimizada para dispositivos móviles y de escritorio.
+- **Uso local**: Sin necesidad de backend ni base de datos.
 
-Este proyecto está desarrollado utilizando tecnologías web modernas, garantizando que funcione de manera eficiente en todos los navegadores.
+## 🛠 Tecnologías Utilizadas
 
-- **HTML5** - Para la estructura del contenido.
-- **CSS3** - Para el diseño y la apariencia visual.
-- **JavaScript** - Para la funcionalidad interactiva.
+Este proyecto está construido con las siguientes tecnologías:
+
+- **HTML5** - Estructura del contenido.
+- **CSS3** - Diseño visual, utilizando un enfoque minimalista.
+- **JavaScript** - Funcionalidad interactiva y dinámica.
 - **Git** - Control de versiones.
-- **GitHub** - Para el repositorio y gestión del proyecto.
+- **GitHub** - Gestión del proyecto y colaboración.
 
-## Esquema de Base de Datos
+## 💾 Esquema de Base de Datos
 
-No aplica, ya que **Mi Lista PRO** no utiliza una base de datos. Los datos se gestionan localmente en el navegador.
+Este proyecto no utiliza una base de datos, ya que la gestión de tareas se realiza directamente en el navegador del usuario mediante almacenamiento local.
 
-## Cómo Correr el Proyecto
+## 🚀 Cómo Correr el Proyecto
 
-Para ejecutar el proyecto en tu máquina local, sigue estos pasos:
+Para correr **Mi Lista PRO** en tu máquina local, sigue estos pasos:
 
 1. **Clona el repositorio**:
    ```bash
