@@ -1,9 +1,5 @@
 # Mi Lista PRO
 
-![Mi Lista PRO Banner](https://via.placeholder.com/1200x400.png?text=Mi+Lista+PRO) 
-
----
-
 **Mi Lista PRO** es una aplicación simple pero poderosa para gestionar tus tareas diarias. Te permite agregar, eliminar y organizar tus tareas de forma intuitiva y atractiva, manteniéndote siempre en control de tus pendientes.
 
 ## 🚀 Características
