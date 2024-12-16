@@ -1,0 +1,57 @@
+name: Continuous Integration (CI)
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - qa
+  pull_request:
+    branches:
+      - main
+      - dev
+      - qa
+
+jobs:
+  validate_html_css_js:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js (for linting and testing)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies (optional, if any dependencies are required)
+      run: npm install
+
+    - name: Validate HTML syntax
+      run: |
+        sudo apt-get install -y tidy
+        tidy -q -e index.html
+      continue-on-error: false
+
+    - name: Validate CSS syntax
+      run: |
+        sudo apt-get install -y csslint
+        csslint style.css
+      continue-on-error: false
+
+    - name: Validate JavaScript syntax
+      run: |
+        sudo apt-get install -y jslint
+        jslint script.js
+      continue-on-error: false
+
+    - name: Upload Artifacts
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: failed-lints
+        path: |
+          index.html
+          style.css
+          script.js
