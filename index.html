@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Lista PRO</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4caf50;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            background-color: #e0f7e1;
+        }
+
+        li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .complete-btn {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .complete-btn:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi Lista PRO</h1>
+        <div>
+            <input id="taskInput" type="text" placeholder="Escribe una tarea...">
+            <button onclick="addTask()">Agregar</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // Función para agregar tarea
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskList = document.getElementById('taskList');
+
+            if (taskInput.value.trim() === '') {
+                alert('Por favor, escribe una tarea válida.');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.innerHTML = `${taskInput.value} 
+                            <button class="complete-btn" onclick="toggleComplete(this)">Completar</button>
+                            <button class="delete-btn" onclick="removeTask(this)">Eliminar</button>`;
+            taskList.appendChild(li);
+            saveTasks();
+            taskInput.value = '';
+        }
+
+        // Función para eliminar tarea
+        function removeTask(button) {
+            const li = button.parentElement;
+            li.remove();
+            saveTasks();
+        }
+
+        // Función para marcar tarea como completada
+        function toggleComplete(button) {
+            const li = button.parentElement;
+            li.classList.toggle('completed');
+            saveTasks();
+        }
+
+        // Función para guardar las tareas en el almacenamiento local
+        function saveTasks() {
+            const taskList = document.getElementById('taskList');
+            const tasks = [];
+
+            for (let i = 0; i < taskList.children.length; i++) {
+                const li = taskList.children[i];
+                tasks.push({
+                    text: li.firstChild.textContent.trim(),
+                    completed: li.classList.contains('completed')
+                });
+            }
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Función para cargar las tareas del almacenamiento local
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskList = document.getElementById('taskList');
+
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.innerHTML = `${task.text} 
+                                <button class="complete-btn" onclick="toggleComplete(this)">Completar</button>
+                                <button class="delete-btn" onclick="removeTask(this)">Eliminar</button>`;
+                if (task.completed) {
+                    li.classList.add('completed');
+                }
+                taskList.appendChild(li);
+            });
+        }
+
+        // Cargar tareas al cargar la página
+        window.onload = loadTasks;
+    </script>
+</body>
+</html>
